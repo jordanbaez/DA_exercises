@@ -1,0 +1,55 @@
+#BUS 1
+# I didn't manage to find the correct codes to solve this exercises, but I found others that I think may be relevant for the exercise
+
+from random import randint
+busstop = 0
+stops = [value for _ in range(randint(0, 10)) for value in [(randint(4, 8), randint(0, 8))]]
+maxriders = 15
+riders = 0
+ridersavg = []
+done = 0
+i = 0
+
+print (stops)
+while riders < maxriders & riders +(stops[i][0])-(stops[i][1]) < maxriders:
+        busstop += 1
+        riders += ((stops[i][0])-(stops[i][1]))
+        i += 1
+        ridersavg.append(riders)
+        print('number of riders at stop ',busstop,' is ',riders)
+   
+  
+print('bus is full')
+print('AVG = ', sum(ridersavg)/len(ridersavg))
+import numpy
+print ('SD = ',numpy.array(ridersavg).std())
+
+# BUS 2
+
+from random import randint
+busstop = 0
+stops =[value for _ in range(randint(0, 20)) for value in [(randint(4, 8), randint(0, 6))]]
+maxriders = 15
+riders = 0
+ridersavg = []
+done = 0
+i = 0
+
+while busstop != len(stops):
+  if riders < maxriders & riders +(stops[i][0])-(stops[i][1]) < maxriders:
+    busstop += 1
+    riders += ((stops[i][0])-(stops[i][1]))
+    i += 1
+    print('number of riders at stop ',busstop,' is ',riders)
+  elif riders < maxriders | riders +(stops[i][0])-(stops[i][1]) >= maxriders:
+      busstop += 1
+      riders += ((stops[i][0])-(stops[i][1]))
+      i += 1
+      print('bus is full')
+  elif riders > maxriders & riders +(stops[i][0])-(stops[i][1]) <= maxriders:
+    busstop += 1
+    riders += ((stops[i][0])-(stops[i][1]))
+    i += 1
+    print('number of riders at stop ',busstop,' is ',riders)
+
+print('terminus')
