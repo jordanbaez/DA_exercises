@@ -1,0 +1,41 @@
+import random
+
+foo = [1, 2, 1]
+turn = 0
+win = 4
+
+ordi = random.choice(foo)
+moi = input(" ")
+print(ordi)
+print(moi)
+
+turn += 1
+
+if ordi == 1 & moi == 1:
+  turn += 1
+  print('tie')
+elif ordi == 2 & moi == 2:
+  turn += 1
+  print('tie')
+elif ordi == 3 & moi == 3:
+  turn += 1
+  print('tie')
+elif ordi == 1 & moi == 2:
+  turn += 1
+  print('computer wins')
+elif ordi == 2 & moi == 3:
+  turn += 1
+  print('computer wins')
+elif ordi == 3 & moi == 1:
+  turn += 1
+  print('computer wins')
+elif ordi == 1 & moi == 3:
+  turn += 1
+  print('I win')
+elif ordi == 3 & moi == 2:
+  turn += 1
+  print('I win')
+elif ordi == 2 & moi == 1:
+  turn += 1
+  print('I win')
+  
