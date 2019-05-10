@@ -1,0 +1,17 @@
+total_depth=125
+ascension=0
+daily_achievement=10
+days=1
+
+ascension+=daily_achievement
+
+while ascension<total_depth:
+  if ascension<total_depth-20:
+    ascension+=daily_achievement
+    days=days+1
+  elif ascension>total_depth-20:
+    ascension=ascension+30
+    days=days+1
+    
+  
+print("Days = ",days)
