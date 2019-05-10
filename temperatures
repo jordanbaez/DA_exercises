@@ -1,0 +1,23 @@
+temp = [33,66,65,0,59,60,62,64,70,76,80,69,80,83,68,79,61,53,50,49,53,48,45,39]
+hight =[]
+fahr = []
+print ('min & max : ',min(temp),',', max(temp))
+
+for i in temp:
+  if i >= 70:
+    hight.append(i)
+
+print('high temperatures list :',hight)
+
+print('average :',sum(temp)/len(temp))
+print('average hour 3 :',(temp[2]+temp[4])/2)
+
+for j in temp:
+  fahr.append(1.8*(j)+32)
+  
+print ('fahrenheit temps :',fahr)
+
+for k in temp:
+  if k > 80 | (sum(temp)/len(temp) > 65):
+
+    print('True')
