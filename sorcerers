@@ -1,0 +1,81 @@
+gandalf = [10, 11, 13, 30, 20, 11, 10, 33, 22, 22]
+saruman = [23, 66, 12, 33, 12, 10, 44, 23, 12, 17]
+gwin=0
+swin=0
+
+
+for z in range(len(gandalf)):
+        if gandalf[z] < saruman[z]:
+            swin = swin+1
+        elif gandalf[z] == saruman[z]:
+            swin = swin+1
+            gwin = gwin+1
+        else:
+          gwin = gwin+1
+
+if gwin > swin:
+  print('Gandalf wins')
+elif gwin<swin:
+  print ('Saruman wins')
+else:
+  print('Tie')
+
+#BONUS
+
+power = {
+    'Fireball': 50, 
+    'Lightning bolt': 40, 
+    'Magic arrow': 10, 
+    'Black Tentacles': 25, 
+    'Contagion': 45
+}
+
+gandalf = ['Fireball', 'Lightning bolt', 'Lightning bolt', 'Magic arrow', 'Fireball', 
+           'Magic arrow', 'Lightning bolt', 'Fireball', 'Magic arrow', 'Fireball']
+saruman = ['Contagion', 'Contagion', 'Black Tentacles', 'Fireball', 'Black Tentacles', 
+           'Lightning bolt', 'Magic arrow', 'Contagion', 'Magic arrow', 'Magic arrow']
+
+gpower = []
+spower = []
+
+for g in gandalf:
+  for k, v in power.items():
+  
+    if k == g:
+      gpower.append(v)
+print('gpower ',gpower)
+
+for s in saruman:
+    for k, v in power.items():
+      if k == s:
+        spower.append(v)
+print('spower ',spower)
+
+count=[]
+
+for y in range(len(gpower)):
+        if gpower[y] > spower[y]:
+            count.append('true')
+        elif gpower[y] == spower[y]:
+            count.append('true')
+        else:
+          count.append('false')
+          
+print(count)
+
+v = 'true'  # search for this value
+n = 3  # number of consecutive appearances of v
+vList = [v] * n
+
+for i in range(len(count) - n):
+    if count[i:i + n] == vList:
+        print ('Gandalf wins')
+        break
+else:
+    print ('Saruman wins')
+    
+print ('Gandalf\'s spell average = ', sum(gpower)/len(gpower))
+print ('Saruman\'s spell average = ', sum(spower)/len(spower))
+
+import numpy
+print ('Gandalf\'s standard deviation = ',numpy.array(gpower).std(),', and Saruman\'s standard deviation = ',numpy.array(gpower).std())
