@@ -17,7 +17,14 @@ for j in temp:
   
 print ('fahrenheit temps :',fahr)
 
+# looking for code : if 4 items in temp > 70 | if 1 item > 80 | if all items' average > 65
+# above_seventy =0
+# for k in temp: if k>70 : above_seventy += 1
+# if above_seventy >= 4 : True
+
 for k in temp:
   if k > 80 | (sum(temp)/len(temp) > 65):
 
     print('True')
+
+# if i, i+1, i+2, and i+3are in range (i:i+4), True
