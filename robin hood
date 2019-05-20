@@ -3,35 +3,66 @@ points = [(4, 5), (-0, 2), (4, 7), (1, -3), (3, -2), (4, 5),
           (-4, 7), (-1, 3), (-3, 2), (-4, -5), (-3, 2),
           (5, 7), (5, 7), (2, 2), (9, 9), (-8, -9)]
 
-pointslist=[]
+
+#number_of_double_shots=0
+#pointslist=[]
 q1 = 0
 q2=0
 q3=0
 q4=0
 z = 0
 
-#les scores doublons
+#list of the coordinates of the doubles
 import collections
-print ([item for item, count in collections.Counter(points).items() if count > 1])
 
-for i in points:
-  pointslist.append(list(i))
+print ('coordinates of arrows that hit other arrows : ',[item for item, count in collections.Counter(points).items() if count > 1])
 
-#cherche dans quel quart la flèche est arrivée
-while z < (len(pointslist)) :
-  if pointslist[z][0] > 0 & pointslist[z][1] > 0:
-    print (points[z][1])
+#another better way, but still unperfect
+list_of_doubles =[]
+list_of_double =[]
+
+for i in range(len(points)):
+  for j in range(len(points)):
+    if (i!=j) & (i<j):
+      if (points[i][0]-points[j][0]==0) & (points[i][1]-points[j][1]==0):
+        list_of_doubles.append(points[j])
+        list_of_double.append(points[i])
+       # print(points[i][0], points[j][0])
+       
+doubles = list_of_doubles+list_of_double
+print('list of the double shots : ',doubles)
+
+#i can't understand why the tuples (5,7) appear 2 times too many in the list
+
+
+#in which quadrant did the arrow landed :
+for z in range(len(points)):
+  if (points[z][0] > 0) & (points[z][1] > 0):
+    q2+=1
+  elif (points[z][0] < 0) & (points[z][1] > 0):
+    q1+=1 
+  elif (points[z][0] < 0) & (points[z][1] < 0):
+    q4+=1
   else :
-    q4 += 1
-    z+=1
-    
-print(q1,q2,q3,q4)
+    q3 += 1
+ 
+print('arrows in quadrant 1 : ',q1,' - arrows in quadrant 2 : ',q2,' - arrows in quadrant 3 : ',q3,' - arrows in quadrant 4 : ',q4)
 
 #print(points.sort(key=lambda tup: tup[0]))
 
+#shots close to the target
 j = 0
+close_shots=[]
+fallen=[]
+fallen_rounds=[]
+for j in range(len(points)):
+  if (0-points[j][0] == 0) | (0 -points[j][1] == 0):
+    close_shots.append(points[j])
+print('the 2 shots closest to the target were : ',close_shots)
 
-while j< len(points):
-  if ((points[j][0])-(points[j][1])) == 0:
-    print (j)
-  j += 1
+#arrows that fell on the ground
+for j in range(len(points)):
+  if (points[j][0] == 9) | (0 -points[j][1] == 9):
+    fallen_rounds.append(j)
+    fallen.append(points[j])
+print('fallen arrows are : ',fallen,'from the shots : ',fallen_rounds)
